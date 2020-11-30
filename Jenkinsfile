@@ -18,6 +18,9 @@ dockerImage = docker.build registry + ":$BUILD_NUMBER"
 }
 }
 }
+stage('Maven'){
+sh "mvn clean install"}
+}
 stage('Deploy image to Dockerhub') {
 steps{
 script {
