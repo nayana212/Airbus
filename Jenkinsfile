@@ -13,8 +13,6 @@ git 'https://github.com/nayana212/Airbus.git'
 }
 stage('Mvn Package'){
 steps{
-# def mvnHome = tool name: 'maven-3', type: 'maven'
-# def mvnCMD = "${mvnHome}/bin/mvn"
 sh "${mvnCMD} clean package"
 }
 }
