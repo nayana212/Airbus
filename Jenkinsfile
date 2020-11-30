@@ -6,22 +6,19 @@ dockerImage = 'Dockerfile'
 }
 agent any
 stages {
-stage('Clone code from Git') {
+stage('Cloning our Git') {
 steps {
 git 'https://github.com/nayana212/Airbus.git'
 }
 }
-stage('Build Docker image') {
+stage('Building our image') {
 steps{
 script {
 dockerImage = docker.build registry + ":$BUILD_NUMBER"
 }
 }
 }
-#stage('Maven'){
-#sh "mvn clean install"}
-#}
-stage('Deploy image to Dockerhub') {
+stage('Deploy our image') {
 steps{
 script {
 docker.withRegistry( '', registryCredential ) {
@@ -31,5 +28,5 @@ dockerImage.push()
 }
 }
 }
-
-
+}
+}
